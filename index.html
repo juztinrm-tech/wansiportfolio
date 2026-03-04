@@ -7,92 +7,515 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PORTFOLIO</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.8;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        color: #e0e0e0;
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    header {
+        text-align: center;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border-radius: 20px;
+        margin-bottom: 50px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #top {
+        font-size: 3em;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #ffd700, #ffed4e, #ff6b6b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    header img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid #ffd700;
+        object-fit: cover;
+        box-shadow: 0 0 30px rgba(255, 215, 0, 0.4), 0 8px 16px rgba(0, 0, 0, 0.3);
+        margin: 20px 0;
+        transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+        transform: scale(1.05) rotateZ(5deg);
+    }
+
+    #info {
+        font-size: 1.1em;
+        margin: 20px 0;
+        line-height: 1.8;
+        color: #ffffff;
+        font-weight: 500;
+    }
+
+    #info b {
+        font-size: 1.4em;
+        color: #ffd700;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    header > p:last-of-type {
+        margin-top: 20px;
+        font-size: 1.05em;
+        color: #b0b0b0;
+        font-style: italic;
+    }
+
+    section {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 35px;
+        margin-bottom: 40px;
+        border-radius: 15px;
+        border-left: 5px solid #ff6b6b;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h2 {
+        font-size: 2.2em;
+        margin-bottom: 25px;
+        background: linear-gradient(135deg, #ffd700, #ffed4e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    h3 {
+        font-size: 1.5em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        color: #ffb366;
+        font-weight: 700;
+    }
+
+    h4 {
+        font-size: 1.3em;
+        color: #ffd700;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(255, 215, 0, 0.5), transparent);
+        margin: 40px 0;
+    }
+
+    ul {
+        list-style: none;
+        margin-left: 0;
+    }
+
+    ul li {
+        padding: 12px 0;
+        padding-left: 30px;
+        position: relative;
+        font-size: 1.05em;
+        line-height: 1.6;
+        transition: all 0.3s ease;
+    }
+
+    ul li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #ff6b6b;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    ul li:hover {
+        padding-left: 40px;
+        color: #ffd700;
+    }
+
+    a {
+        color: #ffd700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        font-weight: 600;
+    }
+
+    a:after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #ffd700, #ff6b6b);
+        transition: width 0.3s ease;
+    }
+
+    a:hover {
+        color: #ff6b6b;
+    }
+
+    a:hover:after {
+        width: 100%;
+    }
+
+    .projects-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .project-card {
+        background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 215, 0, 0.05));
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(255, 107, 107, 0.3);
+        border-color: #ff6b6b;
+        background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(255, 215, 0, 0.1));
+    }
+
+    .project-card a {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 8px 16px;
+        background: linear-gradient(135deg, #ff6b6b, #ffd700);
+        color: #000;
+        border-radius: 6px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+    }
+
+    .project-card a:hover {
+        color: #000;
+        box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+        transform: scale(1.05);
+    }
+
+    .project-card a:after {
+        display: none;
+    }
+
+    .lang-images {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .lang-images img {
+        height: 90px;
+        width: auto;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4));
+        border-radius: 10px;
+    }
+
+    .lang-images img:hover {
+        transform: translateY(-10px) scale(1.1);
+        filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.4));
+    }
+
+    .contact-icons {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 30px;
+        flex-wrap: wrap;
+    }
+
+    .contact-icons a {
+        transition: all 0.3s ease;
+    }
+
+    .contact-icons img {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+        border: 2px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .contact-icons a:hover img {
+        transform: scale(1.15) rotate(-5deg);
+        filter: drop-shadow(0 8px 20px rgba(255, 215, 0, 0.6));
+        border-color: #ffd700;
+    }
+
+    .back-to-top {
+        display: inline-block;
+        padding: 12px 28px;
+        background: linear-gradient(135deg, #ff6b6b, #ffd700);
+        color: #000 !important;
+        border-radius: 50px;
+        font-weight: 700;
+        margin-top: 20px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+
+    .back-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+        color: #000 !important;
+    }
+
+    .back-to-top:after {
+        display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        body {
+            padding: 20px 10px;
+        }
+
+        header {
+            padding: 25px;
+        }
+
+        section {
+            padding: 25px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+        }
+
+        #top {
+            font-size: 2em;
+        }
+
+        header img {
+            width: 120px;
+            height: 120px;
+        }
+
+        .projects-container {
+            grid-template-columns: 1fr;
+        }
+
+        .lang-images {
+            gap: 15px;
+        }
+
+        .lang-images img {
+            height: 70px;
+        }
+
+        .contact-icons {
+            gap: 20px;
+        }
+
+        .contact-icons img {
+            width: 60px;
+            height: 60px;
+        }
+    }
+</style>
 <body>
-    <h2 style="color: blue;">Portfolio</h2>
-    <img src=" images/Id.jpeg" alt="My Image" width="200" height="200">
-    <p>
-     <b> MANALOTO JUZTIN RHEIVER DAVID<br></b><br>
-     San Vicente, Magalang, Pampanga<br>
-     juztinrheiverm@gmail.com<br>
-    </p>
+    <div class="container">
+        <header>
+            <h2 id="top">Portfolio</h2>
+            <img src="images/Id.jpeg" alt="My Image">
+            <p id="info">
+                <b>MANALOTO JUZTIN RHEIVER DAVID</b>
+                San Vicente, Magalang, Pampanga<br>
+                juztinrheiverm@gmail.com
+            </p>
+            <p>This portfolio presents a collection of tasks that demonstrate my skills, effort, and understanding of the assigned activities.</p>
+        </header>
 
-    <p>This portfolio presents a collection of tasks that demonstrate my skills, effort, and understanding of the assigned activities.</p>
-<hr>
-    <p>
-        <h2><b> &#10052 About Me </b></h2><br>
-        I am someone who likes to keep to myself most of the time. I enjoy gaming and listening to music during my free time. I am also passionate about learning new things, especially in the field of technology. My goal is to continuously improve my skills and knowledge to achieve success in my future career.
-    </p>
-    <h3>What I Believe in:</h3>
-    <ul>
-        <li>Minding my own business</li>
-        <li>Respecting who deserved to be respected</li>
-        <li>Time is gold so i take all the time i can take.</li>
-    </ul>
-    <p> </p>
-    <h3>&#127891 Education </h3>
-    <ul>
-        <li>Senior High School: Magalang Institute Corporation | <b><i>STEM</i></b></li>
-        <li>Junior High School: Magalang Institute Corporation</li>
-        <li>Elementary School: San Vicente Elementary School</li>
-    </ul>
-    <hr>
-    <h2>    &#129534 Languages I used before </h2>
-    <img src=" images/html.jpeg" alt="HTML" width="" height="90">
-    <img src=" images/java.jpeg" alt="Java" width="" height="90">
-    <img src=" images/python.jpeg" alt="Python" width="" height="85">
-    <hr>
-    <h2>&#128187 My Projects </h2>
-    <h4> MIDTERMS </h4>
-    <ul>
-        <li>MIDTERM Task 1: <a href="codes/Task_I/index.html" style="text-decoration: none;">RESUME</Resume></a> </li>
-        <li>MIDTERM Task 2: <a href="codes/Task_II/index.html" style="text-decoration: none;">UNORDERED AND ORDERED LIST</a></li>
-        <li>MIDTERM Task 3: <a href="codes/Task_III/index.html" style="text-decoration: none;">HTML FORM</a></li>
-        <li>MIDTERM Task 4: <a href="codes/Task_IV/index.html" style="text-decoration: none;">IMAGE MAP</a></li>
-        <li>MIDTERM Task 5: <a href="codes/Task_V/index.html" style="text-decoration: none;">RESUME CSS APPLIED</a></li>
-        <li>MIDTERM Task 6: <a href="codes/Task_VI/index.html" style="text-decoration: none;">DISPLAY PROPERTY</a></li>
-    </ul>
-    <hr>
-    <h4> FINALS </h4>
-    <ul>
-        <li>FINAL Task 1: <a href="">TBA</a></li>
-        <li>FINAL Task 2: <a href="">TBA</a></li>
-        <li>FINAL Task 3: <a href="">TBA</a></li>
-    </ul>
-    <hr>
-    <h2>&#128269 I love: </h2>
-    <ul>
-        <li>&#127918Gaming</li>
-        <li>&#127900Listening to Music</li>
-        <li>&#128187 Watching Series</li>
-    </ul>
-    <hr>
-    <h2> &#128293Fun Facts </h2>
-    <ul>
-        <li>I would complain about everything but still try to get it done.</li>
-        <li>I always take my time to do things properly.</li>
-        <li>I am a fast learner and fast unlearner means I forget things quickly.</li>
-    </ul>
-    <hr>
-    <h2> &#128161 Skills</h2>
-    <ul>
-        <li>Time Management</li>
-        <li>Observation</li>
-        <li>Adaptability</li>
-    </ul>
-    <hr>
-    <h2> &#128222 Contact Me </h2>
-    <a href="https://www.facebook.com/juztinrheiver.manaloto">
-        <img src="images/facebook.jpeg" width="100" height="100" alt="facebook">
-    </a>
-    <a href="https://www.gmail.com/juztinrheiverm@gmail.com">
-        <img src="images/gmail.jpeg" width="100" height="100" alt="gmail">
-    </a>
+        <section>
+            <h2>❄ About Me</h2>
+            <p>I am someone who likes to keep to myself most of the time. I enjoy gaming and listening to music during my free time. I am also passionate about learning new things, especially in the field of technology. My goal is to continuously improve my skills and knowledge to achieve success in my future career.</p>
+            
+            <h3>What I Believe in:</h3>
+            <ul>
+                <li>Minding my own business</li>
+                <li>Respecting who deserved to be respected</li>
+                <li>Time is gold so i take all the time i can take.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🎓 Education</h2>
+            <ul>
+                <li>Senior High School: Magalang Institute Corporation | <b><i>STEM</i></b></li>
+                <li>Junior High School: Magalang Institute Corporation</li>
+                <li>Elementary School: San Vicente Elementary School</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🧾 Languages I used before</h2>
+            <div class="lang-images">
+                <img src="images/html.jpeg" alt="HTML">
+                <img src="images/java.jpeg" alt="Java">
+                <img src="images/python.jpeg" alt="Python">
+            </div>
+        </section>
+
+        <section>
+            <h2>💻 My Projects</h2>
+            
+            <h4>MIDTERMS</h4>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">MIDTERM Task 1</h4>
+                    <p>RESUME</p>
+                    <a href="codes/Task_I/index.html">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">MIDTERM Task 2</h4>
+                    <p>UNORDERED AND ORDERED LIST</p>
+                    <a href="codes/Task_II/index.html">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">MIDTERM Task 3</h4>
+                    <p>HTML FORM</p>
+                    <a href="codes/Task_III/index.html">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">MIDTERM Task 4</h4>
+                    <p>IMAGE MAP</p>
+                    <a href="codes/Task_IV/index.html">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">MIDTERM Task 5</h4>
+                    <p>RESUME CSS APPLIED</p>
+                    <a href="codes/Task_V/index.html">View Project</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">MIDTERM Task 6</h4>
+                    <p>DISPLAY PROPERTY</p>
+                    <a href="codes/Task_VI/index.html">View Project</a>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 40px;">FINALS</h4>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">FINAL Task 1</h4>
+                    <p>Coming Soon</p>
+                    <a href="javascript:void(0);" style="opacity: 0.5; cursor: not-allowed;">TBA</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">FINAL Task 2</h4>
+                    <p>Coming Soon</p>
+                    <a href="javascript:void(0);" style="opacity: 0.5; cursor: not-allowed;">TBA</a>
+                </div>
+                <div class="project-card">
+                    <h4 style="margin-top: 0;">FINAL Task 3</h4>
+                    <p>Coming Soon</p>
+                    <a href="javascript:void(0);" style="opacity: 0.5; cursor: not-allowed;">TBA</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>🔍 I love:</h2>
+            <ul>
+                <li>🎮 Gaming</li>
+                <li>🎜 Listening to Music</li>
+                <li>💻 Watching Series</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🔥 Fun Facts</h2>
+            <ul>
+                <li>I would complain about everything but still try to get it done.</li>
+                <li>I always take my time to do things properly.</li>
+                <li>I am a fast learner and fast unlearner means I forget things quickly.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>💡 Skills</h2>
+            <ul>
+                <li>Time Management</li>
+                <li>Observation</li>
+                <li>Adaptability</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📞 Contact Me</h2>
+            <div class="contact-icons">
+                <a href="https://www.facebook.com/juztinrheiver.manaloto" target="_blank">
+                    <img src="images/facebook.jpeg" alt="facebook">
+                </a>
+                <a href="https://www.gmail.com/juztinrheiverm@gmail.com" target="_blank">
+                    <img src="images/gmail.jpeg" alt="gmail">
+                </a>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </div>
+        </section>
+    </div>
 </body>
-
 </html>
-
-
-
-
-
-
