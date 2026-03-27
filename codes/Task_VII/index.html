@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semantic</title>
+  <style>
+  *{box-sizing: border-box;}
+    body{
+      margin-top: 0px;
+    }
+    header, footer{
+      background-color: pink;
+      height: 100px;
+      padding: 20px;
+      text-align: center;
+    }
+    header, h1{
+      text-align: center;
+    }
+    nav{
+      background-color: grey;
+      height: 50px;
+    }
+    main{
+      display: flex;
+      flex-wrap: wrap;
+      height: auto;
+    }
+    aside {
+      flex: 1;
+      background-color: blue;
+      width: 20%;
+      float: left;
+      margin: 0px;
+      height: auto;
+      padding: 10px;
+     
+    }
+    section , article {
+      background-color: palevioletred;
+      width: 40%;
+      float: left;
+      margin: 0px;
+      height: auto;
+      padding: 10px;
+      
+    }
+    footer{
+    background-color: maroon;
+    height: 100px;
+    clear: both;
+    text-align: center;
+    }
+    p{
+      text-align: justify;
+      overflow-wrap: break-word;
+    }
+    
+    
+    @media screen and (max-width:800px){
+      aside, section, article{
+        width: 100%;
+        flex-direction: column;
+      }
+    }
+    #navbar ul{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: deeppink;
+    }
+    #navbar li{
+      float: left;
+    }
+    
+    #navbar a{
+      display: block;
+      color: maroon;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+      border: 3px little;
+    }
+    #navbar li a:hover{
+      background-color: rebeccapurple;
+    }
+  </style>
+</head>
+
+<body>
+  <header><h1>HEADER heAD</h1></header>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#news">NEWS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="#about">ABOUT</a></li>
+    </ul>
+  </nav>
+  <main>
+  <aside><h2>aside that is thatside</h2><p>ssibalyakisekyabakayarouclbylahdsagwiqeqwjebshdgqgyugyugyugyugyugyugyuiibieunf2ueinfiuefuenfijwebfjiwebfiwebfiwebfuiwehfuiwhefuihweuifhewufheiwufivweuvycqwuoeqwioecqwioyevoiqwvyo</p></aside>
+  <section><h2>This section is a section</h2><p>jumpstwotheworldpackagebruhtherwewuqiecywvuieyqwuieyqwuiewuqeyqwiuexwbyeuiwyeuiwqgdhsgahdajsgjdsajhwqgyugyugyugyuguygyuguguygubhbhjbhjhjugygyyewye</p></section>
+  <article><h2>this article sucks</h2><p>wv eqwuyeqwoyeweyqwewveioqwqeoiwvqeqwuyeowqyevqweuiqwybeuwqyeiuwqyeiuqwyeuiqwyeuiqwyeuiqyeuiqwyeuiqwjriqwuhiqwjeioqwjioejwiejwqiojewqeggqwieuctqwuiecqwuecqiwuyvyyeuiqwyeuiwysdgiqweuwqyeiuqwyeuiwqyeuiqwyueiidk</p></article>
+  </main>
+  <footer>
+    <h2>THIS FOOTHAR</h2>
+  </footer>
+
+  <a href="MIDTERMTASKVII.png" style="text-decoration: none;">Source Code.</a>
+</body>
+
+</html>
