@@ -1,0 +1,40 @@
+body {
+  background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+}
+
+.main-wrapper {
+  background: #d9e1e8;
+}
+
+.title {
+  color: #2c2ca3;
+  font-weight: 600;
+}
+
+/* Card Design */
+.custom-card {
+  background: #eeeeee;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  height: 100%;
+  transition: 0.3s;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Number Styling */
+.card-number {
+  color: #2c2ca3;
+  font-weight: bold;
+}
+
+/* Button tweak */
+.btn-info {
+  background-color: #00bcd4;
+  border: none;
+  color: #fff;
+}

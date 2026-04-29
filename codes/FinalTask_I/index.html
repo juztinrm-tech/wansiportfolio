@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Layout Recreation</title>
+<style>
+    body {
+        height: 3000px;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: black;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .fixed-box {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 320px;
+        height: 180px;
+        background: #ccc;
+    }
+
+    .product-container {
+        position: relative;
+        display: inline-block;
+        margin-top: 100px;
+    }
+
+    .product-container img {
+        width: 250px;
+        display: block;
+    }
+
+    .badge {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        background: black;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        background: rgba(255,255,255,0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .product-container:hover .overlay {
+        opacity: 1;
+    }
+
+    .overlay button {
+        padding: 8px 15px;
+        border: 1px solid #000;
+        background: white;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="close-btn">X</div>
+
+<div class="fixed-box"></div>
+
+<div class="product-container">
+    <img src="shirt.jpg/" alt="Shirt">
+    <div class="badge">20% OFF</div>
+    <div class="overlay">
+        <button>Add to Cart</button>
+    </div>
+</div>
+
+</body>
+</html>
