@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - UniHive</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-logo">UniHive</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-section="events">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Events</span>
+            </a>
+            <a href="#" class="nav-item logout" onclick="smoothBackToHome()">
+                <i class="fas fa-home"></i>
+                <span>Back to Home</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+   
+        <header class="dashboard-header">
+            <h1 class="dashboard-title">Dashboard</h1>
+            <div class="profile-section">
+                <button class="profile-btn">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Student</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="dashboard-content">
+            <div id="dashboardSection" class="page-section active">
+                <!-- Statistics Cards -->
+                <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-events-count">0</h3>
+                        <p>Total Events</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="announcements-count">0</h3>
+                        <p>Announcements</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="active-events-count">0</h3>
+                        <p>Active Events</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events Section -->
+            <div class="events-section">
+                <h2 class="section-title">Upcoming Events</h2>
+                <div class="events-table-container">
+                    <table class="events-table">
+                        <thead>
+                            <tr>
+                                <th>Event Name</th>
+                                <th>Date</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="upcoming-events-body">
+                            <!-- Events will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="announcements-section">
+                <div class="section-header">
+                    <h2 class="section-title">Announcements</h2>
+                </div>
+                <div class="announcements-grid" id="studentAnnouncementsList">
+                    <!-- Student announcements will be populated here -->
+                </div>
+            </div>
+        </div>
+
+            <div id="eventsSection" class="page-section">
+            <!-- Events Section -->
+            <div class="event-management-section">
+                <div class="event-management-header">
+                    <h2 class="event-management-title">Events</h2>
+                </div>
+
+                <!-- Event Cards Grid -->
+                <div class="event-cards-grid" id="studentEventsList">
+                    <!-- Student events will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/student.js"></script>
+    <script>
+        function smoothBackToHome() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500);
+        }
+
+        function setSection(section) {
+            const dashboardSection = document.getElementById('dashboardSection');
+            const eventsSection = document.getElementById('eventsSection');
+            const pageTitle = document.querySelector('.dashboard-title');
+
+            if (section === 'events') {
+                dashboardSection.classList.remove('active');
+                eventsSection.classList.add('active');
+                pageTitle.textContent = 'Events';
+            } else {
+                dashboardSection.classList.add('active');
+                eventsSection.classList.remove('active');
+                pageTitle.textContent = section === 'dashboard' ? 'Dashboard' : section.charAt(0).toUpperCase() + section.slice(1);
+            }
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.classList.contains('logout')) return;
+
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+
+                const section = this.dataset.section;
+                setSection(section);
+            });
+        });
+
+        window.addEventListener('load', () => {
+            document.body.style.transition = 'opacity 0.5s ease-in';
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Access - UniHive</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <h2 class="logo">UniHive</h2>
+        <button class="menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#about">About Us</a>
+        </nav>
+    </header>
+
+    <section class="roles-section">
+        <div class="roles-container">
+            <h1>Choose Your Access Level</h1>
+            <p class="roles-subtitle">Select whether you're a student or an administrator</p>
+            
+            <div class="roles-grid">
+                <div class="role-card student-role">
+                    <div class="role-icon">👨‍🎓</div>
+                    <h2>Student Access</h2>
+                    <p>View campus events, announcements, and your department's schedule</p>
+                    <button class="btn student-btn" onclick="smoothNavigate('student-dashboard.html')">
+                        Enter as Student
+                    </button>
+                </div>
+
+                <div class="role-card admin-role">
+                    <div class="role-icon">🔐</div>
+                    <h2>Admin Access</h2>
+                    <p>Manage events, announcements, and campus schedules</p>
+                    <button class="btn admin-btn" onclick="smoothNavigate('login.html')">
+                        Admin Login
+                    </button>
+                </div>
+            </div>
+
+            <a href="index.html" class="back-link" onclick="smoothNavigate('index.html'); return false;">Back to Home</a>
+
+            <hr class="section-divider">
+
+            <div class="unihive-info" id="about">
+                <h2>What is UniHive?</h2>
+                <p class="info-description">UniHive is your university's centralized platform for staying connected with campus life. In one place, you get everything you need to know about what's happening across PSAU.</p>
+                
+                <div class="info-features">
+                    <div class="info-card">
+                        <div class="info-icon">🎓</div>
+                        <h3>Campus Events</h3>
+                        <p>Discover seminars, events, competitions, campus programs, and activities happening across all departments and the university.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📢</div>
+                        <h3>Announcements</h3>
+                        <p>Stay informed with important updates from administration, student organizations, and campus-wide alerts.</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-icon">📅</div>
+                        <h3>Department Schedules</h3>
+                        <p>Access your department's schedule for classes, exams, and events to stay organized throughout the semester.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 UniHive. All rights reserved. | PSAU Campus Hub</p>
+    </footer>
+
+    <script>
+        function smoothNavigate(url) {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.menu-toggle');
+            nav.classList.toggle('mobile-menu');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('mobile-menu', 'active');
+                toggle.classList.remove('active');
+            }
+        });
+    </script>
+

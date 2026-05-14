@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniHive - Campus Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <h2 class="logo">UniHive</h2>
+        <button class="menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="roles.html#about">About Us</a>
+        </nav>
+    </header>
+
+    <section class="hero-landing">
+        <div class="hero-content">
+            <img src="assets/images/logo-01.svg" alt="UniHive Logo" class="hero-logo">
+            <h1>UniHive</h1>
+            <p class="tagline">Campus Announcements & Events</p>
+            <p class="description">Stay connected with your university. Get real-time updates on campus events and important announcements.</p>
+            <button class="btn continue-btn" onclick="smoothNavigate('roles.html')">Continue</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 UniHive. All rights reserved. | PSAU Campus Hive</p>
+    </footer>
+
+    <script>
+        function smoothNavigate(url) {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 500);
+        }
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.menu-toggle');
+            nav.classList.toggle('mobile-menu');
+            nav.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('mobile-menu', 'active');
+                toggle.classList.remove('active');
+            }
+        });
+
+
+        window.addEventListener('load', () => {
+            document.body.style.transition = 'opacity 0.5s ease-in';
+            document.body.style.opacity = '1';
+        });
+    </script>
+>
